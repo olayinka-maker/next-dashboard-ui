@@ -21,7 +21,7 @@ const Navbar = () => {
       </div>
 
       {/* Icons */}
-      <div className=" flex items-center gap-6">
+      <div className=" flex items-center gap-6 w-full justify-end">
         <div className=" bg-white rounded-full w-7 h-7 flex items-center justify-center cursor-pointer">
           <Image src={"/message.png"} alt="" width={20} height={20} />
         </div>
