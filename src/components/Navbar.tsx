@@ -13,6 +13,7 @@ const Navbar = () => {
           width={14}
           height={14}
         />
+        {/* test */}
         <input
           className="w-[200px] p-2 bg-transparent outline-none "
           placeholder="search..."
