@@ -1,3 +1,4 @@
+import Announcement from "@/components/Announcement";
 import Attendance from "@/components/AttendanceChart";
 import { EventCalendar } from "@/components/Calendar";
 import CountChart from "@/components/CountChart";
@@ -39,7 +40,9 @@ const Admin = () => {
           <EventCalendar />
         </div>
 
-        <div className="rounded-2xl  bg-gray-200  h-2/6"></div>
+        <div className="rounded-2xl bg-white p-4  h-2/6">
+          <Announcement />
+        </div>
       </div>
     </div>
   );
