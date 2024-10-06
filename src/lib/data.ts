@@ -916,147 +916,274 @@ export const announcementsData = [
 ];
 
 // YOU SHOULD CHANGE THE DATES OF THE EVENTS TO THE CURRENT DATE TO SEE THE EVENTS ON THE CALENDAR
-export const calendarEvents = [
+// export const calendarEvents = [
+//   {
+//     title: "Math",
+//     allDay: false,
+//     start: new Date(2024, 7, 12, 8, 0),
+//     end: new Date(2024, 7, 12, 8, 45),
+//   },
+//   {
+//     title: "English",
+//     allDay: false,
+//     start: new Date(2024, 7, 12, 9, 0),
+//     end: new Date(2024, 7, 12, 9, 45),
+//   },
+//   {
+//     title: "Biology",
+//     allDay: false,
+//     start: new Date(2024, 7, 12, 10, 0),
+//     end: new Date(2024, 7, 12, 10, 45),
+//   },
+//   {
+//     title: "Physics",
+//     allDay: false,
+//     start: new Date(2024, 7, 12, 11, 0),
+//     end: new Date(2024, 7, 12, 11, 45),
+//   },
+//   {
+//     title: "Chemistry",
+//     allDay: false,
+//     start: new Date(2024, 7, 12, 13, 0),
+//     end: new Date(2024, 7, 12, 13, 45),
+//   },
+//   {
+//     title: "History",
+//     allDay: false,
+//     start: new Date(2024, 7, 12, 14, 0),
+//     end: new Date(2024, 7, 12, 14, 45),
+//   },
+//   {
+//     title: "English",
+//     allDay: false,
+//     start: new Date(2024, 7, 13, 9, 0),
+//     end: new Date(2024, 7, 13, 9, 45),
+//   },
+//   {
+//     title: "Biology",
+//     allDay: false,
+//     start: new Date(2024, 7, 13, 10, 0),
+//     end: new Date(2024, 7, 13, 10, 45),
+//   },
+//   {
+//     title: "Physics",
+//     allDay: false,
+//     start: new Date(2024, 7, 13, 11, 0),
+//     end: new Date(2024, 7, 13, 11, 45),
+//   },
+
+//   {
+//     title: "History",
+//     allDay: false,
+//     start: new Date(2024, 7, 13, 14, 0),
+//     end: new Date(2024, 7, 13, 14, 45),
+//   },
+//   {
+//     title: "Math",
+//     allDay: false,
+//     start: new Date(2024, 7, 14, 8, 0),
+//     end: new Date(2024, 7, 14, 8, 45),
+//   },
+//   {
+//     title: "Biology",
+//     allDay: false,
+//     start: new Date(2024, 7, 14, 10, 0),
+//     end: new Date(2024, 7, 14, 10, 45),
+//   },
+
+//   {
+//     title: "Chemistry",
+//     allDay: false,
+//     start: new Date(2024, 7, 14, 13, 0),
+//     end: new Date(2024, 7, 14, 13, 45),
+//   },
+//   {
+//     title: "History",
+//     allDay: false,
+//     start: new Date(2024, 7, 14, 14, 0),
+//     end: new Date(2024, 7, 13, 14, 45),
+//   },
+//   {
+//     title: "English",
+//     allDay: false,
+//     start: new Date(2024, 7, 15, 9, 0),
+//     end: new Date(2024, 7, 15, 9, 45),
+//   },
+//   {
+//     title: "Biology",
+//     allDay: false,
+//     start: new Date(2024, 7, 15, 10, 0),
+//     end: new Date(2024, 7, 15, 10, 45),
+//   },
+//   {
+//     title: "Physics",
+//     allDay: false,
+//     start: new Date(2024, 7, 15, 11, 0),
+//     end: new Date(2024, 7, 15, 11, 45),
+//   },
+
+//   {
+//     title: "History",
+//     allDay: false,
+//     start: new Date(2024, 7, 15, 14, 0),
+//     end: new Date(2024, 7, 15, 14, 45),
+//   },
+//   {
+//     title: "Math",
+//     allDay: false,
+//     start: new Date(2024, 7, 16, 8, 0),
+//     end: new Date(2024, 7, 16, 8, 45),
+//   },
+//   {
+//     title: "English",
+//     allDay: false,
+//     start: new Date(2024, 7, 16, 9, 0),
+//     end: new Date(2024, 7, 16, 9, 45),
+//   },
+
+//   {
+//     title: "Physics",
+//     allDay: false,
+//     start: new Date(2024, 7, 16, 11, 0),
+//     end: new Date(2024, 7, 16, 11, 45),
+//   },
+//   {
+//     title: "Chemistry",
+//     allDay: false,
+//     start: new Date(2024, 7, 16, 13, 0),
+//     end: new Date(2024, 7, 16, 13, 45),
+//   },
+//   {
+//     title: "History",
+//     allDay: false,
+//     start: new Date(2024, 7, 16, 14, 0),
+//     end: new Date(2024, 7, 16, 14, 45),
+//   },
+// ];
+// First, let's define our types
+interface CalendarEvent {
+  title: string;
+  allDay: boolean;
+  start: Date;
+  end: Date;
+  color?: string; // Optional: for subject-specific colors
+}
+
+// Helper function to create dates more easily
+const createDate = (day: number, hour: number, minute: number): Date => {
+  const date = new Date();
+  date.setDate(day);
+  date.setHours(hour, minute, 0, 0);
+  return date;
+};
+
+// Current month's events
+export const calendarEvents: CalendarEvent[] = [
+  // Monday
   {
     title: "Math",
     allDay: false,
-    start: new Date(2024, 7, 12, 8, 0),
-    end: new Date(2024, 7, 12, 8, 45),
+    start: createDate(8, 8, 0), // 8:00 AM
+    end: createDate(8, 8, 45), // 8:45 AM
+    color: "#FF5733", // Optional: distinctive color for Math
   },
   {
     title: "English",
     allDay: false,
-    start: new Date(2024, 7, 12, 9, 0),
-    end: new Date(2024, 7, 12, 9, 45),
+    start: createDate(8, 9, 0),
+    end: createDate(8, 9, 45),
+    color: "#33FF57",
   },
   {
     title: "Biology",
     allDay: false,
-    start: new Date(2024, 7, 12, 10, 0),
-    end: new Date(2024, 7, 12, 10, 45),
+    start: createDate(8, 10, 0),
+    end: createDate(8, 10, 45),
+    color: "#3357FF",
   },
-  {
-    title: "Physics",
-    allDay: false,
-    start: new Date(2024, 7, 12, 11, 0),
-    end: new Date(2024, 7, 12, 11, 45),
-  },
-  {
-    title: "Chemistry",
-    allDay: false,
-    start: new Date(2024, 7, 12, 13, 0),
-    end: new Date(2024, 7, 12, 13, 45),
-  },
-  {
-    title: "History",
-    allDay: false,
-    start: new Date(2024, 7, 12, 14, 0),
-    end: new Date(2024, 7, 12, 14, 45),
-  },
-  {
-    title: "English",
-    allDay: false,
-    start: new Date(2024, 7, 13, 9, 0),
-    end: new Date(2024, 7, 13, 9, 45),
-  },
-  {
-    title: "Biology",
-    allDay: false,
-    start: new Date(2024, 7, 13, 10, 0),
-    end: new Date(2024, 7, 13, 10, 45),
-  },
-  {
-    title: "Physics",
-    allDay: false,
-    start: new Date(2024, 7, 13, 11, 0),
-    end: new Date(2024, 7, 13, 11, 45),
-  },
+  // Add more events for Monday...
 
+  // Tuesday
   {
-    title: "History",
+    title: "English",
     allDay: false,
-    start: new Date(2024, 7, 13, 14, 0),
-    end: new Date(2024, 7, 13, 14, 45),
+    start: createDate(9, 9, 0),
+    end: createDate(9, 9, 45),
   },
+  {
+    title: "Biology",
+    allDay: false,
+    start: createDate(9, 10, 0),
+    end: createDate(9, 10, 45),
+  },
+  // Add more events for Tuesday...
+
+  // Wednesday
   {
     title: "Math",
     allDay: false,
-    start: new Date(2024, 7, 14, 8, 0),
-    end: new Date(2024, 7, 14, 8, 45),
+    start: createDate(10, 8, 0),
+    end: createDate(10, 8, 45),
   },
-  {
-    title: "Biology",
-    allDay: false,
-    start: new Date(2024, 7, 14, 10, 0),
-    end: new Date(2024, 7, 14, 10, 45),
-  },
+  // Add more events for Wednesday...
 
-  {
-    title: "Chemistry",
-    allDay: false,
-    start: new Date(2024, 7, 14, 13, 0),
-    end: new Date(2024, 7, 14, 13, 45),
-  },
-  {
-    title: "History",
-    allDay: false,
-    start: new Date(2024, 7, 14, 14, 0),
-    end: new Date(2024, 7, 13, 14, 45),
-  },
+  // Thursday
   {
     title: "English",
     allDay: false,
-    start: new Date(2024, 7, 15, 9, 0),
-    end: new Date(2024, 7, 15, 9, 45),
+    start: createDate(11, 9, 0),
+    end: createDate(11, 9, 45),
   },
-  {
-    title: "Biology",
-    allDay: false,
-    start: new Date(2024, 7, 15, 10, 0),
-    end: new Date(2024, 7, 15, 10, 45),
-  },
-  {
-    title: "Physics",
-    allDay: false,
-    start: new Date(2024, 7, 15, 11, 0),
-    end: new Date(2024, 7, 15, 11, 45),
-  },
+  // Add more events for Thursday...
 
-  {
-    title: "History",
-    allDay: false,
-    start: new Date(2024, 7, 15, 14, 0),
-    end: new Date(2024, 7, 15, 14, 45),
-  },
+  // Friday
   {
     title: "Math",
     allDay: false,
-    start: new Date(2024, 7, 16, 8, 0),
-    end: new Date(2024, 7, 16, 8, 45),
+    start: createDate(12, 8, 0),
+    end: createDate(12, 8, 45),
   },
-  {
-    title: "English",
-    allDay: false,
-    start: new Date(2024, 7, 16, 9, 0),
-    end: new Date(2024, 7, 16, 9, 45),
-  },
-
-  {
-    title: "Physics",
-    allDay: false,
-    start: new Date(2024, 7, 16, 11, 0),
-    end: new Date(2024, 7, 16, 11, 45),
-  },
-  {
-    title: "Chemistry",
-    allDay: false,
-    start: new Date(2024, 7, 16, 13, 0),
-    end: new Date(2024, 7, 16, 13, 45),
-  },
-  {
-    title: "History",
-    allDay: false,
-    start: new Date(2024, 7, 16, 14, 0),
-    end: new Date(2024, 7, 16, 14, 45),
-  },
+  // Add more events for Friday...
 ];
+
+// Optional: Helper function to generate a full week of events
+const generateWeekEvents = () => {
+  const subjects = {
+    MATH: { title: "Math", color: "#FF5733" },
+    ENGLISH: { title: "English", color: "#33FF57" },
+    BIOLOGY: { title: "Biology", color: "#3357FF" },
+    PHYSICS: { title: "Physics", color: "#FF33F5" },
+    CHEMISTRY: { title: "Chemistry", color: "#33FFF5" },
+    HISTORY: { title: "History", color: "#F5FF33" },
+  };
+
+  const schedule = [
+    // Monday
+    [
+      { subject: subjects.MATH, time: [8, 0] },
+      { subject: subjects.ENGLISH, time: [9, 0] },
+      { subject: subjects.BIOLOGY, time: [10, 0] },
+      // ... more periods
+    ],
+    // Tuesday
+    [
+      { subject: subjects.ENGLISH, time: [9, 0] },
+      { subject: subjects.BIOLOGY, time: [10, 0] },
+      // ... more periods
+    ],
+    // ... more days
+  ];
+
+  return schedule.flatMap((day, dayIndex) =>
+    day.map(({ subject, time }) => ({
+      title: subject.title,
+      allDay: false,
+      start: createDate(8 + dayIndex, time[0], time[1]),
+      end: createDate(8 + dayIndex, time[0] + 1, time[1] - 15),
+      color: subject.color,
+    }))
+  );
+};
+
+// Use this to generate a full week of events:
+// export const calendarEvents = generateWeekEvents();

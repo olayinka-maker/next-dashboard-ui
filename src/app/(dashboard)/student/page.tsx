@@ -8,7 +8,7 @@ const Students = () => {
     <div className=" flex gap-4 flex-col justify-center md:flex-row p-4">
       {/* LEFT */}
 
-      <div className="w-full lg:w-2/3 flex flex-col bg-white rounded-xl gap-8">
+      <div className="w-full lg:w-2/3 flex  flex-col bg-white rounded-xl gap-8">
         <BigCalendar />
       </div>
 
